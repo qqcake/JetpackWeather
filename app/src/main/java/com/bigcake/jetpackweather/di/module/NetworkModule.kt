@@ -30,7 +30,7 @@ class NetworkModule {
     @Provides
     fun provideQueryParamInterceptor() = Interceptor { chain ->
         var request = chain.request()
-        val url = request.url.newBuilder()
+        val url = request.url().newBuilder()
             .addQueryParameter(APP_ID, BuildConfig.API_KEY)
             .addQueryParameter(UNITS, UNITS_METRIC)
             .build()

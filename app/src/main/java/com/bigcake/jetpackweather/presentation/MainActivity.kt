@@ -24,6 +24,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import com.bigcake.jetpackweather.presentation.ui.theme.JetpackWeatherTheme
 import com.bigcake.jetpackweather.utils.PermissionHelper
 import dagger.hilt.android.AndroidEntryPoint
@@ -43,7 +44,6 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-//                    Greeting("Android")
                     HomeScreen(viewModel)
                 }
             }
@@ -61,7 +61,12 @@ fun HomeScreen(viewModel: MainViewModel) {
     Scaffold(
         topBar = {
             SmallTopAppBar(
-                title = { Text(text = "aaa") }
+                title = {
+                    Text(
+                        text = "${state.weather?.cityName}",
+                        fontWeight = FontWeight.SemiBold
+                    )
+                }
             )
         }
     ) {
